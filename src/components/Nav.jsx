@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link, useOutletContext } from "react-router-dom";
 import LogIn from "./LogIn"
-import NoLogIn from "./NoLogIn";
+import NoLogIn from "./NoLogIn"; 
 
 export default function Nav(){
    const [lector,setLector]=useOutletContext()
