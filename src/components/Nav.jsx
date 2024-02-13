@@ -1,13 +1,12 @@
-import { useState } from "react";
 import { Link, useOutletContext } from "react-router-dom";
 import LogIn from "./LogIn"
 import NoLogIn from "./NoLogIn"; 
 
-export default function Nav(){
-   const [lector,setLector]=useOutletContext()
+export default function Nav({lector,setLector}){
+   
     return(
         <>
-        {lector ? <LogIn lector={lector} setLector={setLector}/>:<NoLogIn />}
+        {lector ? <LogIn lector={lector}/>:<NoLogIn setLector={setLector}/>}
         <ul>
             <li>
                 <Link to="/registrarse">Registrarse</Link>

@@ -1,10 +1,14 @@
-export default function NoLogIn(){
-    const [alias, setAlias] = useState("");
+import { logIn } from "../services/usuario.service";
+import { useState} from "react";
+export default function NoLogIn({setLector}){
+    const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
   const doLogin = (e) => {
     e.preventDefault();
-   
+    logIn(email,password)
+    const lectorLS=localStorage.getItem("user")
+    setLector({lectorLS})
   };
 
   return (
@@ -12,12 +16,12 @@ export default function NoLogIn(){
       <h1>Login</h1>
       <form onSubmit={doLogin}>
         <input
-          name="alias"
+          name="email"
           type="text"
-          placeholder="Alias"
-          value={alias}
+          placeholder="Email"
+          value={email}
           onChange={(e) => {
-            setAlias(e.target.value);
+            setEmail(e.target.value);
           }}
         />
         <input
@@ -29,7 +33,7 @@ export default function NoLogIn(){
             setPassword(e.target.value);
           }}
         />
-        <button type="submit">Entrar</button>
+        <button type="submit">Inicia Sesion</button>
       </form>
     </div>
   );
