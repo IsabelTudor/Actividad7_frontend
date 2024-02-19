@@ -6,7 +6,7 @@ export default function Nav({lector,setLector}){
    
     return(
         <>
-        {lector ? <LogIn lector={lector}/>:<NoLogIn setLector={setLector}/>}
+        {lector ? <LogIn />:<NoLogIn  />}
         <ul>
             <li>
                 <Link to="/registrarse">Registrarse</Link>
