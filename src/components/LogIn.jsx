@@ -1,11 +1,16 @@
-import { useNavigate } from "react-router-dom";
 
-export default function LogIn(){
-  
+
+export default function LogIn({lector,setLector}){
+  function cerrarSesion(){
+    setLector(null)
+    localStorage.removeItem("token")
+  }
 
   return (
     <>
-            <h1>Bienvenido/a {}</h1>
+            <h1>Bienvenido/a {lector.nombre}</h1>
+
+            <button onClick={()=>cerrarSesion()}>Cerrar Sesion</button>
         </>
   );
 }

@@ -3,10 +3,9 @@ import ReactDOM from 'react-dom/client'
 import App from './App.jsx'
 import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 import Registro from './components/Registro.jsx'
-import Catalogo from './components/Catalogo.jsx'
 import Perfil from './components/Perfil.jsx'
 import Prestamos from './components/Prestamos.jsx'
-import LogIn from './components/LogIn.jsx'
+import Catalogo from './components/Catalogo.jsx'
 
 const  router= createBrowserRouter([
   {

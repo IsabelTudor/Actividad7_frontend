@@ -6,21 +6,12 @@ export default function Nav({lector,setLector}){
    
     return(
         <>
-        {lector ? <LogIn />:<NoLogIn  />}
-        <ul>
-            <li>
-                <Link to="/registrarse">Registrarse</Link>
-            </li>
-            <li>
-                <Link to="/catalogo">Catalogo</Link>
-            </li>
-            <li>
-                <Link to="/perfil">Perfil </Link>
-            </li>
-            <li>
-                <Link to="/prestamos">Prestamos</Link>
-            </li>
-        </ul>
+        {lector ? <LogIn lector={lector} setLector={setLector} /> 
+        :<NoLogIn setLector={setLector} />}
+        <Link to="/registrarse">Registrarse</Link>
+        <Link to="/catalogo">Catalogo</Link>
+        <Link to="/perfil">Perfil </Link>
+        <Link to="/prestamos">Prestamos</Link>
         </>
     )
 }

@@ -1,8 +1,7 @@
 import { useOutletContext } from "react-router-dom";
 import { logIn } from "../services/usuario.service";
 import { useState} from "react";
-export default function NoLogIn({}){
-    const [lector,setLector]=useOutletContext()
+export default function NoLogIn({setLector}){
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     

@@ -1,10 +1,10 @@
 import { Outlet } from "react-router-dom"
 import Nav from "./components/Nav"
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 
 export default function App() {
-  const [lector,setLector] = useState([]);
+  const [lector,setLector] = useState(null);
 
   return (
     <>

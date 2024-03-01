@@ -1,9 +1,8 @@
-import { useOutletContext } from "react-router-dom";
-
+import { URL_SERVER } from "../variable/ip";
 
 const logIn=async(email, password,setLector)=>{
 
- fetch("http://localhost:8080/api/usuarios/login",{
+ fetch(URL_SERVER+"usuarios/login",{
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -18,23 +17,19 @@ const logIn=async(email, password,setLector)=>{
         }
         
       }).then(data=>{
-      
+      console.log(data);
         localStorage.setItem("token", data.token)
-       
+        console.log(data);
         const usuario={
-          email:data.usuarioDB.email,
           nombre:data.usuarioDB.nombre,
-          apellidos:data.usuarioDB.apellidos
+          email:data.usuarioDB.email
         }
         setLector(usuario)
-        console.log(usuario);
-
-
       })
       }
   
 const registro=async(email,password,nombre,apellidos)=>{
- fetch("http://localhost:8080/api/usuarios/registro",{
+ fetch(URL_SERVER+"usuarios/registro",{
   method: "POST",
   headers: {
     "Content-Type": "application/json",
@@ -49,8 +44,12 @@ const registro=async(email,password,nombre,apellidos)=>{
   }
  })
  .then(data=>{
-  localStorage.setItem("user", data.email)
-  setLector(data.email)
+  const usuario={
+    nombre:data.usuarioDB.nombre,
+    email:data.usuarioDB.email
+
+  }
+  setLector(usuario)
 })
 }
 

@@ -3,7 +3,7 @@ import { registro } from "../services/usuario.service";
 import { useNavigate } from "react-router-dom";
 
 export default function Registro(){
-    const [alias, setAlias] = useState("");
+    const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [nombre, setNombre] = useState("");
     const [apellidos, setApellidos] = useState("");
@@ -11,7 +11,7 @@ export default function Registro(){
 
   const doRegistro = (e) => {
     e.preventDefault();
-    registro(alias,password,nombre,apellidos)
+    registro(email,password,nombre,apellidos)
   };
 
   return (
@@ -19,13 +19,13 @@ export default function Registro(){
     <h1>Registro</h1>
     <form onSubmit={doRegistro}>
       <input
-      id="alias"
+      id="email"
         name="alias"
         type="text"
         placeholder="Alias"
-        value={alias}
+        value={email}
         onChange={(e) => {
-          setAlias(e.target.value);
+          setEmail(e.target.value);
         }}
       />
       <input
