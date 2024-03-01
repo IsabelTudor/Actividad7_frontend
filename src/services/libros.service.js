@@ -1,3 +1,4 @@
+
 import { URL_SERVER } from "../variable/ip";
 
 const paginas10=async(numPag,setLibrosDisponibles)=>{
@@ -15,6 +16,7 @@ const paginas10=async(numPag,setLibrosDisponibles)=>{
            setLibrosDisponibles(data)
          })
 }
+//TODO tienes que arreglarlo porque solo actualiza algunos , otros no
 const prestar = async (user, ejemplar) => {
     fetch(URL_SERVER + "libros/"+ejemplar, {
         method: "POST",
@@ -41,6 +43,8 @@ const prestar = async (user, ejemplar) => {
         });
       
 };
+
+
 
 
 export {paginas10, prestar}

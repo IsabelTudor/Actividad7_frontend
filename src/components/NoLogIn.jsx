@@ -1,6 +1,7 @@
 import { useOutletContext } from "react-router-dom";
 import { logIn } from "../services/usuario.service";
 import { useState} from "react";
+import { Link } from "react-router-dom";
 export default function NoLogIn({setLector}){
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -16,6 +17,8 @@ export default function NoLogIn({setLector}){
   return (
     <div>
       <h1>Login</h1>
+      <Link to="/registrarse">Registrarse</Link>
+      <Link to="/catalogo">Catalogo</Link>
       <form onSubmit={doLogin}>
         <input
           name="email"

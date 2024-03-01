@@ -10,8 +10,8 @@ export default function Catalogo(){
     
     useEffect(() => {
         paginas10(numPag, setLibrosDisponibles);
-    }, [lector, pintarLibros, numPag]);
-    
+    }, [lector, pintarLibros, numPag,librosDisponibles]);
+    //TODO tienes que arreglarlo añadiendo máximos y mínimos
     function anteriorPag(){
         setNumPag(numPag-1)
     }

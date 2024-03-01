@@ -17,9 +17,9 @@ const logIn=async(email, password,setLector)=>{
         }
         
       }).then(data=>{
-      console.log(data);
+      
         localStorage.setItem("token", data.token)
-        console.log(data);
+        
         const usuario={
           nombre:data.usuarioDB.nombre,
           email:data.usuarioDB.email
