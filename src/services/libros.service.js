@@ -16,7 +16,6 @@ const paginas10=async(numPag,setLibrosDisponibles)=>{
            setLibrosDisponibles(data)
          })
 }
-//TODO tienes que arreglarlo porque solo actualiza algunos , otros no
 const prestar = async (user, ejemplar) => {
     fetch(URL_SERVER + "libros/"+ejemplar, {
         method: "POST",
@@ -87,6 +86,7 @@ const devolver=async (user,idEjemplar)=>{
         console.error(error);
     });
 }
+
 
 
 export {paginas10, prestar,verPrestados,devolver}

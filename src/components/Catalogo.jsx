@@ -1,16 +1,19 @@
 import { useEffect, useState } from "react"
 import { useOutletContext } from "react-router-dom"
 import { paginas10, prestar } from "../services/libros.service";
+import BarraBusqueda from "./BarraBusqueda";
 
 export default function Catalogo(){
     const [lector,setLector]=useOutletContext()
     const [librosDisponibles,setLibrosDisponibles]=useState([]);
     const [pintarLibros,setPintarLibros]=useState(false)
     const [numPag,setNumPag]=useState(0)
+    const [filter,setFilter]=useState("")
     
     useEffect(() => {
         paginas10(numPag, setLibrosDisponibles);
-    }, [lector, pintarLibros, numPag,librosDisponibles]);
+        
+    }, [filter,lector, pintarLibros, numPag,librosDisponibles]);
     //TODO tienes que arreglarlo añadiendo máximos y mínimos
     function anteriorPag(){
         setNumPag(numPag-1)
@@ -26,6 +29,7 @@ export default function Catalogo(){
     return(
         <>
         <h1>Catalogo</h1>
+        <BarraBusqueda filter={filter} setFilter={setFilter}/>
         <table>
         <thead>
             <tr>

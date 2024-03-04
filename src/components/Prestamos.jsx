@@ -22,6 +22,7 @@ export default function Prestamos(){
                 <td>Titulo</td>
                 <td>Autor</td>
                 <td>Fecha de prestamo</td>
+                <td>Fecha de devolucion</td>
             </tr>
         </thead>
         <tbody>
@@ -30,8 +31,9 @@ export default function Prestamos(){
                     <td>{prestado.ejemplar.libro.titulo}</td>
                     <td>{prestado.ejemplar.libro.autor}</td>
                     <td>{new Date(prestado.fechaprestamo).toLocaleDateString()}</td>
-                    <td><button onClick={()=>devolverLibro(prestado.ejemplar.id)}>Devolver libro</button></td>
-                    
+                    {prestado.fechadevolucion==null?
+                    <td><button onClick={()=>devolverLibro(prestado.ejemplar.id)}>Devolver libro</button></td>:
+                    <td>{new Date(prestado.fechadevolucion).toLocaleDateString()}</td>}
                 </tr>
             ))}
         </tbody>
