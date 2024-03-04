@@ -1,10 +1,17 @@
-import {useState} from "react"
-
-export default function Prestamos({lector}){
+import {useEffect, useState} from "react"
+import { devolver, verPrestados } from "../services/libros.service";
+import { useOutletContext } from "react-router-dom";
+export default function Prestamos(){
     const [librosPrestamos,setLibrosPrestamos]=useState([]);
     const [pintarLibros,setPintarLibros]=useState(false)
-    const [numPag,setNumPag]=useState(0)
-
+    const [lector,setLector]=useOutletContext()
+    //TODO tienes que ver como hacer para que al devolver el libro no te aparezca otra vez en la tabla
+    useEffect(()=>{
+        verPrestados(setLibrosPrestamos,setPintarLibros)
+    },[librosPrestamos,pintarLibros])
+   const devolverLibro=(prestadoid)=>{
+    devolver(lector,prestadoid)
+   }
    
     return(
         <>
@@ -14,18 +21,17 @@ export default function Prestamos({lector}){
             <tr>
                 <td>Titulo</td>
                 <td>Autor</td>
-                <td>Disponibles</td>
+                <td>Fecha de prestamo</td>
             </tr>
         </thead>
         <tbody>
-            {librosPrestamos.map(libro=>(
-                <tr key={libro.id}>
-                    <td>{libro.titulo}</td>
-                    <td>{libro.autor}</td>
-                    <td>{libro.fechaprestamo}</td>
-                    {lector?
-                    <td><button onClick={()=>devolverLibro(libro.id)}>Devolver libro</button></td>:
-                    ""}
+            {librosPrestamos.map(prestado=>(
+                <tr key={prestado.ejemplar.id}>
+                    <td>{prestado.ejemplar.libro.titulo}</td>
+                    <td>{prestado.ejemplar.libro.autor}</td>
+                    <td>{new Date(prestado.fechaprestamo).toLocaleDateString()}</td>
+                    <td><button onClick={()=>devolverLibro(prestado.ejemplar.id)}>Devolver libro</button></td>
+                    
                 </tr>
             ))}
         </tbody>

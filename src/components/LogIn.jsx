@@ -9,7 +9,7 @@ export default function LogIn({lector,setLector}){
   return (
     <>
             <h1>Bienvenido/a {lector.nombre}</h1>
-            <Link to="/prestamos" lector={lector}>Prestamos</Link>
+            <Link to="/prestamos">Prestamos</Link>
             <Link to="/catalogo">Catalogo</Link>
             <button onClick={()=>cerrarSesion()}>Cerrar Sesion</button>
         </>

@@ -20,9 +20,9 @@ export default function Registro(){
     <form onSubmit={doRegistro}>
       <input
       id="email"
-        name="alias"
+        name="email"
         type="text"
-        placeholder="Alias"
+        placeholder="Email"
         value={email}
         onChange={(e) => {
           setEmail(e.target.value);
