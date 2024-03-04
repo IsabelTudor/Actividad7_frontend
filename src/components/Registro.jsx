@@ -5,15 +5,19 @@ import { useNavigate } from "react-router-dom";
 export default function Registro(){
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [repassword, setRePassword] = useState("");
     const [nombre, setNombre] = useState("");
     const [apellidos, setApellidos] = useState("");
- 
-
-  const doRegistro = (e) => {
-    e.preventDefault();
-    registro(email,password,nombre,apellidos)
+  
+    
+      const doRegistro = (e) => {
+      e.preventDefault();
+      if(password===repassword){
+        registro(email,password,nombre,apellidos)
+      }else alert("Las constraseñas no coinciden")
+      
   };
-
+    
   return (
     <div>
     <h1>Registro</h1>
@@ -36,6 +40,16 @@ export default function Registro(){
         value={password}
         onChange={(e) => {
           setPassword(e.target.value);
+        }}
+      />
+      <input
+      id="repassword"
+        name="repassword"
+        type="password"
+        placeholder="Repetir Password"
+        value={repassword}
+        onChange={(e) => {
+          setRePassword(e.target.value);
         }}
       />
       <input

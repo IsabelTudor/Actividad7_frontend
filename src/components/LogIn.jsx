@@ -11,6 +11,7 @@ export default function LogIn({lector,setLector}){
             <h1>Bienvenido/a {lector.nombre}</h1>
             <Link to="/prestamos">Prestamos</Link>
             <Link to="/catalogo">Catalogo</Link>
+          
             <button onClick={()=>cerrarSesion()}>Cerrar Sesion</button>
         </>
   );
