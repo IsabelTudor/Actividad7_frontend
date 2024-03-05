@@ -8,7 +8,7 @@ export default function LogIn({lector,setLector}){
 
   return (
     <>
-            <h1>Bienvenido/a {lector.nombre}</h1>
+            <h2>Bienvenido/a {lector.nombre}</h2>
             <Link to="/prestamos">Prestamos</Link>
             <Link to="/catalogo">Catalogo</Link>
           

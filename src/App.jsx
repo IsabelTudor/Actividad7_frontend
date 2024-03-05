@@ -1,6 +1,7 @@
 import { Outlet } from "react-router-dom"
 import Nav from "./components/Nav"
 import { useState } from "react";
+import './styles/global.css'
 
 
 export default function App() {

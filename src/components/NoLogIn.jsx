@@ -16,7 +16,7 @@ export default function NoLogIn({setLector}){
 
   return (
     <div>
-      <h1>Login</h1>
+      <h2>Login</h2>
       <Link to="/registrarse">Registrarse</Link>
       <Link to="/catalogo">Catalogo</Link>
       <form onSubmit={doLogin}>

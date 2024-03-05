@@ -20,7 +20,7 @@ export default function Registro(){
     
   return (
     <div>
-    <h1>Registro</h1>
+    <h2>Registro</h2>
     <form onSubmit={doRegistro}>
       <input
       id="email"

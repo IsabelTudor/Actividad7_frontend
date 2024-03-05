@@ -86,7 +86,62 @@ const devolver=async (user,idEjemplar)=>{
         console.error(error);
     });
 }
-
-
-
-export {paginas10, prestar,verPrestados,devolver}
+const getTotalPag = (setTotalPaginas) =>{
+    fetch(`${URL_SERVER}libros/paginas`)
+        .then(response=>{
+            if(response.ok){
+                return response.json();
+            }else{throw new Error(`Error en la solicitud ${response.statusText}`)}
+        })
+        .then(data=>{
+            setTotalPaginas(data.numPaginas);
+        })
+        .catch(error=>{
+            console.error(error);
+        })
+}
+const getLibrosDisp = (numPag, setLibrosDisponibles, setPintarLibros) => {
+    fetch(`${URL_SERVER}libros/${numPag}`)
+        .then(response=>{
+            if(response.ok){
+                setPintarLibros(false);
+                return response.json();
+            }else{throw new Error(`Error en la solicitud ${response.statusText}`)}
+        })
+        .then(libros=>{
+            setLibrosDisponibles(libros);
+        })
+        .catch(error=>{
+            console.error(error);
+        })
+}
+const getTotalPagBuscada = (filter, setTotalPaginas) =>{
+    fetch(`${URL_SERVER}libros/${filter}/paginas`)
+        .then(response=>{
+            if(response.ok){
+                return response.json();
+            }else{throw new Error(`Error en la solicitud ${response.statusText}`)}
+        })
+        .then(data=>{
+            setTotalPaginas(data.numPaginas);
+        })
+        .catch(error=>{
+            console.error(error);
+        })
+}
+const getLibrosBuscados = (numPag, filter, setLibrosDisponibles, setPintarLibros) =>{
+    fetch(`${URL_SERVER}libros/${filter}/${numPag}`)
+        .then(response=>{
+            if(response.ok){
+                setPintarLibros(false);
+                return response.json();
+            }else{throw new Error(`Error en la solicitud ${response.statusText}`)}
+        })
+        .then(libros=>{
+            setLibrosDisponibles(libros);
+        })
+        .catch(error=>{
+            console.error(error);
+        })
+}
+export {paginas10, prestar,verPrestados,devolver,getTotalPag,getLibrosDisp,getTotalPagBuscada,getLibrosBuscados}
