@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import { useOutletContext } from "react-router-dom"
-import { getLibrosBuscados, getLibrosDisp, getTotalPag, getTotalPagBuscada, paginas10, prestar } from "../services/libros.service";
+import { getLibrosBuscados, getLibrosDisp, getTotalPag, getTotalPagBuscada, prestar } from "../services/libros.service";
 import BarraBusqueda from "./BarraBusqueda";
 
 export default function Catalogo(){

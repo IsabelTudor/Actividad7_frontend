@@ -14,6 +14,12 @@ export default function Registro(){
       e.preventDefault();
       if(password===repassword){
         registro(email,password,nombre,apellidos)
+        alert("Su registro se completo con exito")
+        setEmail("")
+        setPassword("")
+        setRePassword("")
+        setNombre("")
+        setApellidos("")
       }else alert("Las constraseñas no coinciden")
       
   };

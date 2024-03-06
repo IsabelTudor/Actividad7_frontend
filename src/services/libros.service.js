@@ -1,21 +1,6 @@
 
 import { URL_SERVER } from "../variable/ip";
 
-const paginas10=async(numPag,setLibrosDisponibles)=>{
-
-    fetch(URL_SERVER+`libros/${numPag}`)
-
-         .then((response)=>{
-           if(response.ok){
-             return response.json()
-           }else{
-             console.log("No se pudieron traer los libros");
-           }
-         }).then(data=>{
-         
-           setLibrosDisponibles(data)
-         })
-}
 const prestar = async (user, ejemplar) => {
     fetch(URL_SERVER + "libros/"+ejemplar, {
         method: "POST",
@@ -86,7 +71,7 @@ const devolver=async (user,idEjemplar)=>{
         console.error(error);
     });
 }
-const getTotalPag = (setTotalPaginas) =>{
+const getTotalPag = async (setTotalPaginas) =>{
     fetch(`${URL_SERVER}libros/paginas`)
         .then(response=>{
             if(response.ok){
@@ -94,13 +79,14 @@ const getTotalPag = (setTotalPaginas) =>{
             }else{throw new Error(`Error en la solicitud ${response.statusText}`)}
         })
         .then(data=>{
-            setTotalPaginas(data.numPaginas);
+
+           setTotalPaginas(data[0].numpags)
         })
         .catch(error=>{
             console.error(error);
         })
 }
-const getLibrosDisp = (numPag, setLibrosDisponibles, setPintarLibros) => {
+const getLibrosDisp =  async (numPag, setLibrosDisponibles, setPintarLibros) => {
     fetch(`${URL_SERVER}libros/${numPag}`)
         .then(response=>{
             if(response.ok){
@@ -115,7 +101,7 @@ const getLibrosDisp = (numPag, setLibrosDisponibles, setPintarLibros) => {
             console.error(error);
         })
 }
-const getTotalPagBuscada = (filter, setTotalPaginas) =>{
+const getTotalPagBuscada = async (filter, setTotalPaginas) =>{
     fetch(`${URL_SERVER}libros/${filter}/paginas`)
         .then(response=>{
             if(response.ok){
@@ -123,13 +109,13 @@ const getTotalPagBuscada = (filter, setTotalPaginas) =>{
             }else{throw new Error(`Error en la solicitud ${response.statusText}`)}
         })
         .then(data=>{
-            setTotalPaginas(data.numPaginas);
+            setTotalPaginas(data[0].numpaginas);
         })
         .catch(error=>{
             console.error(error);
         })
 }
-const getLibrosBuscados = (numPag, filter, setLibrosDisponibles, setPintarLibros) =>{
+const getLibrosBuscados = async (numPag, filter, setLibrosDisponibles, setPintarLibros) =>{
     fetch(`${URL_SERVER}libros/${filter}/${numPag}`)
         .then(response=>{
             if(response.ok){
@@ -144,4 +130,4 @@ const getLibrosBuscados = (numPag, filter, setLibrosDisponibles, setPintarLibros
             console.error(error);
         })
 }
-export {paginas10, prestar,verPrestados,devolver,getTotalPag,getLibrosDisp,getTotalPagBuscada,getLibrosBuscados}
+export { prestar,verPrestados,devolver,getTotalPag,getLibrosDisp,getTotalPagBuscada,getLibrosBuscados}
