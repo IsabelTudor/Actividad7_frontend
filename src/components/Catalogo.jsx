@@ -20,7 +20,7 @@ export default function Catalogo(){
             getLibrosBuscados(numPag,filter,setLibrosDisponibles,setPintarLibros)
         }
         
-    }, [filter,lector, pintarLibros, numPag]);
+    }, [filter,lector, pintarLibros, numPag ]);
   
    
     const prestarLibro = (libro) => {
