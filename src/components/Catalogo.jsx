@@ -20,16 +20,16 @@ export default function Catalogo(){
             getLibrosBuscados(numPag,filter,setLibrosDisponibles,setPintarLibros)
         }
         
-    }, [filter,lector, pintarLibros, numPag ]);
+    }, [filter, pintarLibros, numPag ]);
   
    
     const prestarLibro = (libro) => {
-        prestar(lector.email,libro)
+        prestar(lector.email,libro,setPintarLibros)
       };
     return(
         <>
         <h2>Catalogo</h2>
-        <BarraBusqueda filter={filter} setFilter={setFilter}/>
+        <BarraBusqueda filter={filter} setFilter={setFilter} setNumPag={setNumPag}/>
         <table>
         <thead>
             <tr>

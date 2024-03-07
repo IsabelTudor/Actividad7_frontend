@@ -50,6 +50,7 @@ const registro=async(email,password,nombre,apellidos)=>{
 
   }
   setLector(usuario)
+  naviga
 })
 }
 

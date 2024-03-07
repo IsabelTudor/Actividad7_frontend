@@ -5,14 +5,12 @@ export default function Prestamos(){
     const [librosPrestamos,setLibrosPrestamos]=useState([]);
     const [pintarLibros,setPintarLibros]=useState(false)
     const [lector,setLector]=useOutletContext()
-    //TODO tienes que ver como hacer para que al devolver el libro no te aparezca otra vez en la tabla
     useEffect(()=>{
         verPrestados(setLibrosPrestamos,setPintarLibros)
-    },[librosPrestamos,pintarLibros])
-   const devolverLibro=(prestadoid)=>{
-    devolver(lector,prestadoid)
+    },[pintarLibros])
+  function devolverLibro(prestadoid){
+    devolver(prestadoid,setPintarLibros)
    }
-   
     return(
         <>
         <h1>Prestamos</h1>
@@ -31,9 +29,9 @@ export default function Prestamos(){
                     <td>{prestado.ejemplar.libro.titulo}</td>
                     <td>{prestado.ejemplar.libro.autor}</td>
                     <td>{new Date(prestado.fechaprestamo).toLocaleDateString()}</td>
-                    {prestado.fechadevolucion==null?
-                    <td><button onClick={()=>devolverLibro(prestado.ejemplar.id)}>Devolver libro</button></td>:
-                    <td>{new Date(prestado.fechadevolucion).toLocaleDateString()}</td>}
+                    {prestado.fechadevolucion==null?(
+                    <td><button onClick={()=>devolverLibro(prestado.ejemplar.id)}>Devolver libro</button></td>):(
+                    <td>{new Date(prestado.fechadevolucion).toLocaleDateString()}</td>)}
                 </tr>
             ))}
         </tbody>

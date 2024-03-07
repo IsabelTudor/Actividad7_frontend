@@ -1,7 +1,7 @@
 
 import { URL_SERVER } from "../variable/ip";
 
-const prestar = async (user, ejemplar) => {
+const prestar = async (user, ejemplar,setPintarLibros) => {
     fetch(URL_SERVER + "libros/"+ejemplar, {
         method: "POST",
         headers: {
@@ -25,6 +25,7 @@ const prestar = async (user, ejemplar) => {
         .catch(error => {
             console.error(error);
         });
+        setPintarLibros(true)
       
 };
 
@@ -32,7 +33,7 @@ const verPrestados=async (setLibrosPrestamos,setPintarLibros)=>{
     fetch(URL_SERVER+"libros/",{
         method: "GET",
         headers: {
-            "Content-Type": "application/json",
+
             "Authorization": "Bearer " + localStorage.getItem("token")  
         },
     })
@@ -50,26 +51,23 @@ const verPrestados=async (setLibrosPrestamos,setPintarLibros)=>{
     });
     setPintarLibros(true)
 }
-const devolver=async (user,idEjemplar)=>{
-    fetch(URL_SERVER+"libros/"+idEjemplar,{
+const devolver=(prestadoid,setPintarLibros)=>{
+    fetch(`${URL_SERVER}libros/${prestadoid}`,{
         method: "PUT",
         headers: {
-            "Content-Type": "application/json",
             "Authorization": "Bearer " + localStorage.getItem("token")  
-        },
-        body: JSON.stringify({ user }),
+        }
     })
     .then(response=>{
         if(response.ok){
+            
             return response.json()
         }else throw new Error ("No se pudo acceder")
-    })
-    .then(data=>{
-
     })
     .catch(error => {
         console.error(error);
     });
+  setPintarLibros(true)
 }
 const getTotalPag = async (setTotalPaginas) =>{
     fetch(`${URL_SERVER}libros/paginas`)

@@ -8,7 +8,7 @@ export default function Registro(){
     const [repassword, setRePassword] = useState("");
     const [nombre, setNombre] = useState("");
     const [apellidos, setApellidos] = useState("");
-  
+    const navigate = useNavigate();
     
       const doRegistro = (e) => {
       e.preventDefault();
@@ -20,6 +20,7 @@ export default function Registro(){
         setRePassword("")
         setNombre("")
         setApellidos("")
+        navigate('/catalogo')
       }else alert("Las constraseñas no coinciden")
       
   };
